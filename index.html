@@ -178,6 +178,8 @@ h1 { max-width: 11.5em; font-size: clamp(46px, 12.6vw, 124px); line-height: .96;
 .lims p { max-width: 13em; font-size: 18px; font-weight: 700; line-height: 1.2; }
 .plan { max-width: 32em; font-weight: 500; text-wrap: balance; }
 .foot { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 22px; padding: 10px; font-size: 14px; font-weight: 500; }
+.foot a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.foot__privacy { flex: 0 0 100%; margin: 6px 0 0; padding-inline: max(0px, calc((100% - 40em) / 2)); font-weight: 400; line-height: 1.45; text-align: center; text-wrap: pretty; }
 @media (min-width: 760px) {
   .mg { gap: 16px; padding: 56px max(40px, env(safe-area-inset-right, 0px)) 28px max(40px, env(safe-area-inset-left, 0px)); }
   .stage { gap: 26px; padding: 32px 28px 28px; border-radius: 32px; }
@@ -312,6 +314,15 @@ h1 { max-width: 11.5em; font-size: clamp(46px, 12.6vw, 124px); line-height: .96;
 @media (max-width: 759.98px) { .duo .stage--acid .h { font-size: 12.6cqw; } }
 .relay__c { max-width: 100px; }
 </style>
+<script>
+/* Meta pixel. Paste the pixel ID between the quotes; while it's empty, nothing loads. The Lead event fires after a signup (see the waitlist script). */
+var META_PIXEL_ID = '';
+if (META_PIXEL_ID) {
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', META_PIXEL_ID);
+  fbq('track', 'PageView');
+}
+</script>
 </head>
 <body>
 <div class="mg">
@@ -362,7 +373,7 @@ h1 { max-width: 11.5em; font-size: clamp(46px, 12.6vw, 124px); line-height: .96;
 </form></div></div>
 </section>
 </main>
-<footer class="foot"><span>Run by [legal name goes here]</span><span>[contact email goes here]</span><span id="privacy">[privacy notice goes here]</span></footer>
+<footer class="foot"><span>Marge is a side project.</span><a href="mailto:hello@mailmarge.com">hello@mailmarge.com</a><p class="foot__privacy" id="privacy"><b>Privacy notice.</b> If you join the waitlist, here or through a form on Facebook or Instagram, we keep your email address and any answers you give, and we use them only to tell you about Marge and to work out what to build. We don’t sell them. Our emails go out through Kit, and this page uses the Meta pixel to see which of our ads bring people here. To have your details deleted, email <a href="mailto:hello@mailmarge.com">hello@mailmarge.com</a>.</p></footer>
 </div>
 <script>
 (function () {
