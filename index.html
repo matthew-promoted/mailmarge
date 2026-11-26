@@ -501,7 +501,7 @@ h1 { max-width: 11.5em; font-size: clamp(46px, 12.6vw, 124px); line-height: .96;
         inner += '<div class="flow__extra"><textarea class="area" aria-labelledby="flow-q-' + index + '"></textarea>' +
           '<button type="button" class="btn" data-part="next">Finish</button></div>';
       }
-      inner += '<div class="flow__foot"><span>' + (index + 1) + ' of ' + QUESTIONS.length + '</span><button type="button" class="skip">Skip</button></div>';
+      inner += '<div class="flow__foot"><span>' + (index + 1) + ' of ' + QUESTIONS.length + '</span></div>';
       el.innerHTML = shell(inner);
       var shownAt = Date.now();
       function fresh() { return Date.now() - shownAt < 400; }
@@ -519,12 +519,12 @@ h1 { max-width: 11.5em; font-size: clamp(46px, 12.6vw, 124px); line-height: .96;
         next.addEventListener('click', function () {
           if (fresh()) return;
           var v = box.value.trim();
-          if (v) save(item, v);
+          if (!v) { box.focus(); return; }
+          save(item, v);
           advance(index);
         });
         if (item.text) box.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); next.click(); } });
       }
-      el.querySelector('.skip').addEventListener('click', function () { if (!fresh()) advance(index); });
       el.querySelector('h3').focus();
     }
   }
